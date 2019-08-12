@@ -16,6 +16,12 @@ def get_db() -> MongoClient:
     return g.db
 
 
+def get_lurker_collection():
+    db = get_db()
+
+    return db['lurker-bot']
+
+
 def close_db(e=None):
     db: MongoClient = g.pop('db', None)
 

@@ -3,8 +3,15 @@
 {% block content %}
 <h1>Lurker Bot</h1>
 
-<div class="ui fluid icon input">
-    <input type="text" placeholder="Search...">
-    <i class="inverted circular search link icon"></i>
+<div class="ui fluid category search">
+    <div class="ui icon fluid input">
+        <input class="prompt" type="text" placeholder="Search animals...">
+        <i class="search icon"></i>
+    </div>
+    <div class="results"></div>
 </div>
+
+{% for user in users %}
+<div>{{ user }}</div>
+{% endfor %}
 {% endblock %}
