@@ -8,6 +8,33 @@ const distFolder = path.join(__dirname, '/web/static/dist');
 
 module.exports = [
     {
+        mode: "development",
+        entry: {
+            "home": './web/static/js/home/index.ts'
+        },
+        output: {
+            filename: '[name]-bundle.js',
+            path: distFolder
+        },
+        resolve: {
+            extensions: ['.ts', '.tsx', '.js']
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.tsx?$/,
+                    loader: 'ts-loader',
+                    exclude: /node_modules/
+                }
+            ]
+        },
+        plugins: [
+            new webpack.ProvidePlugin({
+                Promise: 'es6-promise'
+            })
+        ],
+    },
+    {
         entry: {
             main: './web/static/css/main.scss'
         },
