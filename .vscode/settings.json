@@ -1,6 +1,7 @@
 {
     "python.pythonPath": "/Users/Yuto/.virtualenvs/LurkerSite/bin/python",
     "files.exclude": {
-        "**/__pycache__": true
+        "**/__pycache__": true,
+        "node_modules": true
     }
 }
