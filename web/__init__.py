@@ -24,8 +24,8 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    from .home import home_bp
-    from .user import user_bp
+    from .routes.home import home_bp
+    from .routes.user import user_bp
 
     app.register_blueprint(home_bp)
     app.register_blueprint(user_bp)
