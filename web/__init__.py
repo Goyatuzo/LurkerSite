@@ -1,15 +1,7 @@
+
 import os
-
-from pprint import pprint
 from flask import Flask
-from pymongo import MongoClient
 
-
-url = os.environ["LURKER_DB"] + '&ssl=true&ssl_cert_reqs=CERT_NONE'
-
-client = MongoClient(url)
-
-db = client['lurker-bot']
 
 def create_app(test_config=None):
     # create and configure the app
@@ -33,5 +25,8 @@ def create_app(test_config=None):
 
     app.register_blueprint(home_bp)
     app.register_blueprint(user_bp)
+
+    from . import db
+    db.init_app(app)
 
     return app
