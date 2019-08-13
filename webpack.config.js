@@ -10,7 +10,8 @@ module.exports = [
     {
         mode: "development",
         entry: {
-            "home": './web/static/js/home/index.ts'
+            "home": './web/static/js/home/index.ts',
+            "user-time": './web/static/js/user/user-time.ts'
         },
         output: {
             filename: '[name]-bundle.js',
