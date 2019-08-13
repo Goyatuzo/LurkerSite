@@ -17,6 +17,7 @@ def map_user_to_semantic_ui(item):
 
 @api_search_bp.route('/names', methods=['GET'])
 def get_usernames():
+    """Get a list of usernames that contain the string specified in the user query string."""
     name_query = request.args['user']
 
     coll = get_lurker_collection()

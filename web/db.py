@@ -17,6 +17,9 @@ def get_db() -> MongoClient:
 
 
 def get_lurker_collection():
+    """Get the collection that contains data pertaining to Lurker Bot. Available documents are:
+    * discord_db_user
+    * game_time"""
     db = get_db()
 
     return db['lurker-bot']
