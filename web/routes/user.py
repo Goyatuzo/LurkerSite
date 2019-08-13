@@ -7,4 +7,4 @@ user_bp = Blueprint(
 
 @user_bp.route('/<user_id>')
 def get_user_graph(user_id):
-    return render_template('user-info.html')
+    return render_template('user-time.html')
