@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify, request, Response
 import re
 from ..db import get_lurker_collection
-from bson.json_util import dumps
 
 api_search_bp = Blueprint(
     'api-search', __name__, url_prefix='/api/search')
