@@ -24,4 +24,4 @@ def get_usernames():
 
     semantic_ui = [map_user_to_semantic_ui(i) for i in users]
 
-    return jsonify(semantic_ui)
+    return jsonify({'results': semantic_ui})

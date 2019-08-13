@@ -3,10 +3,10 @@
 {% block content %}
 <h1>Lurker Bot</h1>
 
-<div class="ui fluid category search">
-    <div class="ui icon fluid input">
-        <input class="prompt" type="text" placeholder="Search animals...">
-        <i class="search icon"></i>
+<div class="ui fluid search">
+    <div class="ui fluid icon input">
+        <input class="prompt" type="text" placeholder="Search GitHub">
+        <i class="arrow right icon"></i>
     </div>
     <div class="results"></div>
 </div>
@@ -14,4 +14,9 @@
 {% for user in users %}
 <div>{{ user }}</div>
 {% endfor %}
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='dist/home-bundle.js') }}"></script>
 {% endblock %}
