@@ -27,7 +27,7 @@ def get_user_graph(user_id):
                     '$divide': [{
                         '$subtract': [
                             "$sessionEnd", "$sessionBegin"
-                        ]}, 1000
+                        ]}, 3600000
                     ]}
                 }
             }
