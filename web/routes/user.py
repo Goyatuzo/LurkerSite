@@ -13,6 +13,8 @@ def get_user_graph(user_id):
     user = coll.discord_db_user.find_one({'userId': user_id})
     times = coll.game_time.find({'userId': user_id})
     games = times.distinct('gameName')
+    games.sort()
+    
     times = coll.game_time.aggregate([
         {
             '$match': {
@@ -33,6 +35,11 @@ def get_user_graph(user_id):
                         ]}, 1000
                     ]}
                 }
+            }
+        },
+        {
+            '$sort': {
+                "_id.gameName": 1
             }
         }])
 
