@@ -3,10 +3,32 @@
 {% block content %}
 {{ super() }}
 <h1>{{ user_info.username + '#' + user_info.discriminator }}</h1>
+
+<canvas id="time-chart"></canvas>
+
+{{games}}
 {% endblock %}
 
 {% block scripts %}
-<script src="https://www.jsdelivr.com/package/npm/chart.js?path=dist"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+<script src="{{ url_for('static', filename='dist/user-time-bundle.js') }}"></script>
 
-
+<script>
+var stackedBar = new Chart(document.getElementById("time-chart"), {
+    type: 'bar',
+    data: {
+        labels
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                stacked: true
+            }],
+            yAxes: [{
+                stacked: true
+            }]
+        }
+    }
+});
+</script>
 {% endblock %}
