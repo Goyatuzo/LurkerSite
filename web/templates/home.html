@@ -11,9 +11,38 @@
     <div class="results"></div>
 </div>
 
-{% for user in users %}
-<div>{{ user }}</div>
-{% endfor %}
+<h2>How to start tracking</h2>
+
+<div class="ui list">
+    <div class="item">
+        <i class="icon">1</i>
+        <div class="content">
+            <div class="header">Have access to the bot</div>
+            <div class="description">Only one of the following 2 options must be true</div>
+            <div class="list">
+                <div class="item">
+                    <i class="icon">a</i>
+                    <div class="content">
+                        <div class="header"><a href="https://discord.gg/qJEHRHH">Join the Lurker Server</a></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="icon">b</i>
+                    <div class="content">
+                        <div class="header">One of your servers already has Lurker</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item">
+        <i class="icon">2</i>
+        <div class="content">
+            <div class="header">DM Lurker "addme" and tracking will begin.</div>
+            <div class="description">To stop tracking, DM "removeme" to the bot.</div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 
