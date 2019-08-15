@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "watch": "webpack -w",
-    "build-prod": "webpack -p"
+    "build-prod": "webpack -p",
+    "postinstall": "npm run build-prod"
   },
   "repository": {
     "type": "git",
