@@ -3,6 +3,11 @@
 {% block content %}
 {{ super() }}
 <h1>{{ user_info.username + '#' + user_info.discriminator }}</h1>
+
+{% if drill_deeper == 'true' %}
+<p>Click on one of the bars to get the breakdown of each game's time played.</p>
+
+{% endif %}
 <canvas id="time-chart"></canvas>
 {% endblock %}
 
@@ -11,6 +16,7 @@
 <script>
     var gameNames = {{ games|safe }};
     var gameTimes = {{ times|safe }};
+    var canDrillDeeper = {{ drill_deeper }}
 </script>
 <script src="{{ url_for('static', filename='dist/user-time-bundle.js') }}"></script>
 {% endblock %}

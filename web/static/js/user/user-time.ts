@@ -5,6 +5,7 @@ interface GameTime {
 
 declare var gameNames: string[];
 declare var gameTimes: GameTime[];
+declare var canDrillDeeper: boolean;
 
 var stackedBar = new Chart(document.getElementById("time-chart") as HTMLCanvasElement, {
     type: 'horizontalBar',
@@ -21,7 +22,7 @@ var stackedBar = new Chart(document.getElementById("time-chart") as HTMLCanvasEl
     options: {
         events: ['click'],
         onClick: (evt, elements) => {
-            if (!elements) return;
+            if (!elements || !canDrillDeeper) return;
             
             const active = elements[0];
 
