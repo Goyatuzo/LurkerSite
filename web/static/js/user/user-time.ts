@@ -17,5 +17,16 @@ var stackedBar = new Chart(document.getElementById("time-chart") as HTMLCanvasEl
             borderColor: 'rgba(255, 99, 132, 1)',
             borderWidth: 1
         }]
+    },
+    options: {
+        events: ['click'],
+        onClick: (evt, elements) => {
+            if (!elements) return;
+            
+            const active = elements[0];
+
+            const label = stackedBar.data.labels[(active as any)._index] as string;
+            window.location.href = `${window.location.href}/${encodeURIComponent(label)}`;
+        }
     }
 });
