@@ -1,6 +1,7 @@
 node_modules
 web/static/dist
 
+**/.DS_STORE
 
 ####################
 ##### Python #######
