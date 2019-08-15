@@ -1,1 +1,1 @@
-web: flask run
+web: waitress-serve --call 'web:create_app'
