@@ -11,16 +11,6 @@ stages:
 #   - pipenv install --ignore-pipfile
 #   - pipenv run pytest
 
-staging:
-  stage: deploy
-  script:
-  - apt-get update -qy
-  - apt-get install -y ruby-dev
-  - gem install dpl
-  - dpl --provider=heroku --app=lurker --api-key=$HEROKU_PRODUCTION_API_KEY
-  only:
-  - master
-
 production:
   stage: deploy
   script:
