@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/Users/Yuto/.virtualenvs/LurkerSite/bin/python",
+    "python.pythonPath": "/Users/yuto/.local/share/virtualenvs/LurkerSite-RdOvSH5B/bin/python",
     "files.exclude": {
         "**/__pycache__": true,
         "node_modules": true

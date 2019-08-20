@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from ..db import get_lurker_collection
+from ..db import get_lurker_database
 from bson.json_util import dumps
 import json
 
@@ -9,7 +9,7 @@ user_bp = Blueprint(
 
 @user_bp.route('/<user_id>')
 def get_user_graph(user_id):
-    coll = get_lurker_collection()
+    coll = get_lurker_database()
 
     user = coll.discord_db_user.find_one({'userId': user_id})
     times = coll.game_time.find({'userId': user_id})
@@ -61,7 +61,7 @@ def get_game_label(time):
 
 @user_bp.route('/<user_id>/<game_name>')
 def get_user_game_graph(user_id, game_name):
-    coll = get_lurker_collection()
+    coll = get_lurker_database()
 
     user = coll.discord_db_user.find_one({'userId': user_id})
     times = coll.game_time.find({'userId': user_id})
