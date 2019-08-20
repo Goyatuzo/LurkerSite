@@ -1,5 +1,6 @@
 from flask import render_template
 from flask import Blueprint
+from datetime import datetime, timedelta
 
 from ..db import get_game_times
 
@@ -13,6 +14,11 @@ def home():
 
     game_times = game_times.aggregate([
         {
+            '$match': {
+                'sessionEnd': {'$gte': datetime.now() - timedelta(days=14) }
+            }
+        },
+        {
             '$group': {
                 '_id': {
                     'gameName': "$gameName"
@@ -25,11 +31,13 @@ def home():
                     ]}
                 }
             }
-        }, {
+        },
+        {
             '$sort': {
                 'time': -1
             }
-        }, {
+        },
+        {
             '$limit': 10
         }
     ])
