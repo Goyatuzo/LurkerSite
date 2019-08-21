@@ -24,41 +24,45 @@ def get_from_date(request: request) -> datetime:
 
 @user_bp.route('/<user_id>')
 def get_user_graph(user_id):
-    coll = get_lurker_database()
-    game_collection = get_game_times()
+    try:
+        coll = get_lurker_database()
+        game_collection = get_game_times()
 
-    from_date = get_from_date(request)
+        from_date = get_from_date(request)
 
-    user = coll.discord_db_user.find_one({'userId': user_id})
-    times = game_collection.find({'userId': user_id})
-    games = times.distinct('gameName')
-    games.sort()
+        user = coll.discord_db_user.find_one({'userId': user_id})
+        times = game_collection.find({'userId': user_id})
+        games = times.distinct('gameName')
+        games.sort()
 
-    times = game_collection.aggregate([
-        {
-            '$match': {
-                'userId': user_id,
-                'sessionEnd': {'$gte': from_date}
-            }},
-        {
-            '$group': {
-                '_id': "$gameName",
-                'time': {'$sum': {
-                    '$divide': [{
-                        '$subtract': [
-                            "$sessionEnd", "$sessionBegin"
-                        ]}, 3600000
-                    ]}
+        times = game_collection.aggregate([
+            {
+                '$match': {
+                    'userId': user_id,
+                    'sessionEnd': {'$gte': from_date}
+                }},
+            {
+                '$group': {
+                    '_id': "$gameName",
+                    'time': {'$sum': {
+                        '$divide': [{
+                            '$subtract': [
+                                "$sessionEnd", "$sessionBegin"
+                            ]}, 3600000
+                        ]}
+                    }
                 }
-            }
-        },
-        {
-            '$sort': {
-                "_id": 1
-            }
-        }])
+            },
+            {
+                '$sort': {
+                    "_id": 1
+                }
+            }])
 
-    return render_template('user-time.html', user_info=user, games=games, times=dumps(times), drill_deeper='true')
+        return render_template('user-time.html', user_info=user, games=games, times=dumps(times), drill_deeper='true')
+    except Exception as e:
+        print(e)
+        return render_template('user-time-error.html'), 500
 
 
 def get_game_label(time):
@@ -80,40 +84,44 @@ def get_game_label(time):
 
 @user_bp.route('/<user_id>/<game_name>')
 def get_user_game_graph(user_id, game_name):
-    coll = get_lurker_database()
-    game_collection = get_game_times()
+    try:
+        coll = get_lurker_database()
+        game_collection = get_game_times()
 
-    from_date = get_from_date(request)
+        from_date = get_from_date(request)
 
-    user = coll.discord_db_user.find_one({'userId': user_id})
-    times = game_collection.find({'userId': user_id})
-    times = game_collection.aggregate([
-        {
-            '$match': {
-                'userId': user_id,
-                'gameName': game_name,
-                'sessionEnd': {'$gte': from_date}
-            }},
-        {
-            '$group': {
-                '_id': {
-                    'gameName': "$gameName",
-                    'gameDetail': "$gameDetail",
-                    'gameState': "$gameState",
-                    'gameType': "$gameType"
-                },
-                'time': {'$sum': {
-                    '$divide': [{
-                        '$subtract': [
-                            "$sessionEnd", "$sessionBegin"
-                        ]}, 3600000
-                    ]}
+        user = coll.discord_db_user.find_one({'userId': user_id})
+        times = game_collection.find({'userId': user_id})
+        times = game_collection.aggregate([
+            {
+                '$match': {
+                    'userId': user_id,
+                    'gameName': game_name,
+                    'sessionEnd': {'$gte': from_date}
+                }},
+            {
+                '$group': {
+                    '_id': {
+                        'gameName': "$gameName",
+                        'gameDetail': "$gameDetail",
+                        'gameState': "$gameState",
+                        'gameType': "$gameType"
+                    },
+                    'time': {'$sum': {
+                        '$divide': [{
+                            '$subtract': [
+                                "$sessionEnd", "$sessionBegin"
+                            ]}, 3600000
+                        ]}
+                    }
                 }
-            }
-        }])
+            }])
 
-    saved = list(times)
+        saved = list(times)
 
-    games = [get_game_label(i) for i in saved]
+        games = [get_game_label(i) for i in saved]
 
-    return render_template('user-time.html', user_info=user, games=games, times=json.dumps(saved), drill_deeper='false')
+        return render_template('user-time.html', user_info=user, games=games, times=json.dumps(saved), drill_deeper='false')
+    except Exception as e:
+        print(e)
+        return render_template('user-time-error.html'), 500
