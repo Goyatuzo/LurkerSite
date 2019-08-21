@@ -1,4 +1,6 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
+from datetime import datetime, timedelta
+
 from ..db import get_lurker_database, get_game_times
 from bson.json_util import dumps
 import json
@@ -7,10 +9,25 @@ user_bp = Blueprint(
     'user', __name__, template_folder='templates', url_prefix='/user')
 
 
+def get_from_date(request: request) -> datetime:
+    """Given the request, extract the from date string and attempt to parse it into a datetime
+    object. If it fails, it will automatically return the minimum date."""
+    from_date_str = request.args.get('from')
+
+    if from_date_str is not None:
+        from_date = datetime.strptime(from_date_str)
+    else:
+        from_date = datetime.now() - timedelta(days=14)
+
+    return from_date
+
+
 @user_bp.route('/<user_id>')
 def get_user_graph(user_id):
     coll = get_lurker_database()
     game_collection = get_game_times()
+
+    from_date = get_from_date(request)
 
     user = coll.discord_db_user.find_one({'userId': user_id})
     times = game_collection.find({'userId': user_id})
@@ -20,7 +37,8 @@ def get_user_graph(user_id):
     times = game_collection.aggregate([
         {
             '$match': {
-                'userId': user_id
+                'userId': user_id,
+                'sessionEnd': {'$gte': from_date}
             }},
         {
             '$group': {
