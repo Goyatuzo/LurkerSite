@@ -36,6 +36,13 @@ var stackedBar = new Chart(document.getElementById("time-chart") as HTMLCanvasEl
             }
 
             window.location.href = redirectUrl;
+        },
+        scales: {
+            xAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
         }
     }
 });
