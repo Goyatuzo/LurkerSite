@@ -15,7 +15,7 @@ def home():
     game_times = game_times.aggregate([
         {
             '$match': {
-                'sessionEnd': {'$gte': datetime.now() - timedelta(days=14) }
+                'sessionEnd': {'$gte': datetime.now() - timedelta(days=14)}
             }
         },
         {
@@ -44,7 +44,5 @@ def home():
 
     listify = list(game_times)
     names = [time['_id']['gameName'] for time in listify]
-
-    print(names)
 
     return render_template('home.html', games=names, times=listify)
