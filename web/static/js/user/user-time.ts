@@ -28,7 +28,14 @@ var stackedBar = new Chart(document.getElementById("time-chart") as HTMLCanvasEl
             const urlComponents = window.location.href.split('?');
 
             const label = stackedBar.data.labels[(active as any)._index] as string;
-            window.location.href = `${urlComponents[0]}/${encodeURIComponent(label)}?${urlComponents[1]}`;
+
+            let redirectUrl = `${urlComponents[0]}/${encodeURIComponent(label)}`;
+
+            if (urlComponents[1]) {
+                redirectUrl += `?${urlComponents[1]}`;
+            }
+
+            window.location.href = redirectUrl;
         }
     }
 });
