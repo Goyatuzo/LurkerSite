@@ -83,13 +83,16 @@ def get_user_game_graph(user_id, game_name):
     coll = get_lurker_database()
     game_collection = get_game_times()
 
+    from_date = get_from_date(request)
+
     user = coll.discord_db_user.find_one({'userId': user_id})
     times = game_collection.find({'userId': user_id})
     times = game_collection.aggregate([
         {
             '$match': {
                 'userId': user_id,
-                'gameName': game_name
+                'gameName': game_name,
+                'sessionEnd': {'$gte': from_date}
             }},
         {
             '$group': {
