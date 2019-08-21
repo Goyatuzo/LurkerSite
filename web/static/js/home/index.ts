@@ -27,5 +27,14 @@ var stackedBar = new Chart(document.getElementById("time-chart") as HTMLCanvasEl
             borderColor: 'rgba(255, 99, 132, 1)',
             borderWidth: 1
         }]
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
     }
 });
