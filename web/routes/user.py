@@ -14,8 +14,8 @@ def get_from_date(request: request) -> datetime:
     object. If it fails, it will automatically return the minimum date."""
     from_date_str = request.args.get('from')
 
-    if from_date_str is not None:
-        from_date = datetime.strptime(from_date_str)
+    if from_date_str == 'all':
+        from_date = datetime.min
     else:
         from_date = datetime.now() - timedelta(days=14)
 
