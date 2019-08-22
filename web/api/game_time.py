@@ -28,7 +28,7 @@ def get_feed(user_id: str):
         },
         {
             '$project': {
-                '_id': 0,
+                '_id': {'$toString': '$_id'},
                 'gameName': '$gameName',
                 'gameDetail': '$gameDetail',
                 'gameState': '$gameState',
