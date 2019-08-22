@@ -11,7 +11,8 @@ module.exports = [
         mode: "development",
         entry: {
             "home": './web/static/js/home/index.ts',
-            "user-time": './web/static/js/user/user-time.ts'
+            "user-time": './web/static/js/user/user-time.ts',
+            "live-feed": './web/static/js/user/live-feed.tsx'
         },
         output: {
             filename: '[name]-bundle.js',
