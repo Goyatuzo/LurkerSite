@@ -16,4 +16,8 @@ export interface IGameFeedItem {
      * The amount of time spent playing in hours.
      */
     time: number;
+    /**
+     * A string representation of a Python datetime. Will need to be converted to be utilized properly.
+     */
+    sessionEnd: string;
 }

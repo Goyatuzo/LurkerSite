@@ -24,7 +24,7 @@ def get_feed(user_id: str):
             }
         },
         {
-            '$limit': 15
+            '$limit': 5
         },
         {
             '$project': {
