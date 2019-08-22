@@ -38,7 +38,8 @@ def get_feed(user_id: str):
                             "$sessionEnd", "$sessionBegin"
                         ]}, 3600000
                     ]}
-                }
+                },
+                'sessionEnd': '$sessionEnd'
             }
         }
     ])
