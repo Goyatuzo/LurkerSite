@@ -46,23 +46,26 @@ export class LiveFeedComponent extends React.Component<Props, State> {
 
     render() {
         return (
-            <table className="ui very basic table">
-                <thead>
-                    <tr>
-                        <th>Game Name</th>
-                        <th>Game State</th>
-                        <th>Game Detail</th>
-                        <th>Duration</th>
-                        <th>Played</th>
-                    </tr>
-                </thead>
+            <div>
+                <h2>Recent activity</h2>
+                <table className="ui very basic table">
+                    <thead>
+                        <tr>
+                            <th>Game Name</th>
+                            <th>Game State</th>
+                            <th>Game Detail</th>
+                            <th>Duration</th>
+                            <th>Played</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    {
-                        this.state.feedItems.map(item => <LiveFeedItem key={item._id} feedEntry={item} />)
-                    }
-                </tbody>
-            </table>
+                    <tbody>
+                        {
+                            this.state.feedItems.map(item => <LiveFeedItem key={item._id} feedEntry={item} />)
+                        }
+                    </tbody>
+                </table>
+            </div>
         )
     }
 }

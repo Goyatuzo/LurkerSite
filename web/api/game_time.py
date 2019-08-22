@@ -1,6 +1,7 @@
+import re
 from flask import Blueprint, jsonify, request, Response
 from bson.json_util import dumps
-import re
+
 from ..db import get_game_times
 
 api_game_time_bp = Blueprint(
@@ -47,6 +48,8 @@ def get_feed(user_id: str):
     stored = list(times)
 
     for i in range(len(stored)):
-        stored[i]['sessionEnd'] = stored[i]['sessionEnd'].isoformat()
+        # Need to manually add the UTC timezone to this string, since it doesn't automatically do so.
+        stored[i]['sessionEnd'] = stored[i]['sessionEnd'].isoformat() + \
+            '+00:00'
 
     return jsonify(stored)

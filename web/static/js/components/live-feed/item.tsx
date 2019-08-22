@@ -9,18 +9,19 @@ interface Props {
 
 export const LiveFeedItem: React.StatelessComponent<Props> = props => {
     const endDate = parseISO(props.feedEntry.sessionEnd);
-    const diff = subMilliseconds(new Date(), endDate.getTime());
+    const now = new Date();
+    const diff = now.getTime() - endDate.getTime();
 
     let playedAgoString = '';
-    
-    if (diff.getDate() > 0) {
-        playedAgoString = `${diff.getDate()} days ago`;
-    } else if (diff.getHours() > 0) {
-        playedAgoString = `${diff.getHours()} hours ago`;
-    } else if (diff.getMinutes() > 0) {
-        playedAgoString = `${diff.getMinutes()} minutes ago`;
+
+    if (diff > 86400000) {
+        playedAgoString = `${(diff / 86400000).toFixed(0)} days ago`;
+    } else if (diff > 3600000) {
+        playedAgoString = `${(diff / 3600000).toFixed(0)} hours ago`;
+    } else if (diff > 60000) {
+        playedAgoString = `${(diff / 60000).toFixed(0)} minutes ago`;
     } else {
-        playedAgoString = `${diff.getSeconds()} seconds ago`;
+        playedAgoString = `${(diff / 1000).toFixed(0)} seconds ago`;
     }
 
     return (
