@@ -59,7 +59,7 @@ def get_user_graph(user_id):
                 }
             }])
 
-        return render_template('user-time.html', user_info=user, games=games, times=dumps(times), drill_deeper='true')
+        return render_template('user-time.html', user_info=user, games=games, times=dumps(times), user_id=user_id, drill_deeper='true')
     except Exception as e:
         print(e)
         return render_template('user-time-error.html'), 500

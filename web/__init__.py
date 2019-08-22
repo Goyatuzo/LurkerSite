@@ -27,8 +27,10 @@ def create_app(test_config=None):
     app.register_blueprint(user_bp)
 
     from .api.search import api_search_bp
+    from .api.game_time import api_game_time_bp
 
     app.register_blueprint(api_search_bp)
+    app.register_blueprint(api_game_time_bp)
 
     from . import db
     db.init_app(app)

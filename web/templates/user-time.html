@@ -6,8 +6,9 @@
 
 {% if drill_deeper == 'true' %}
 <p>Click on one of the bars to get the breakdown of each game's time played.</p>
-
 {% endif %}
+
+<div id="live-feed-entry" data-user-id='{{ user_id }}'></div>
 
 <button class="ui button"><a href="?from=2weeks">2 Weeks</a></button>
 <button class="ui button"><a href="?from=all">All Times</a></button>
@@ -22,4 +23,5 @@
     var canDrillDeeper = {{ drill_deeper }}
 </script>
 <script src="{{ url_for('static', filename='dist/user-time-bundle.js') }}"></script>
+<script src="{{ url_for('static', filename='dist/live-feed-bundle.js') }}"></script>
 {% endblock %}
