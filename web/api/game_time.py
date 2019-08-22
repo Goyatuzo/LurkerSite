@@ -46,4 +46,7 @@ def get_feed(user_id: str):
 
     stored = list(times)
 
+    for i in range(len(stored)):
+        stored[i]['sessionEnd'] = stored[i]['sessionEnd'].isoformat()
+
     return jsonify(stored)
