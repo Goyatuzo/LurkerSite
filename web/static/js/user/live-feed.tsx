@@ -3,4 +3,6 @@ import { render } from 'react-dom';
 
 import Component from '../components/live-feed'
 
-render(<Component />, document.getElementById('live-feed-entry'))
+const element = document.getElementById('live-feed-entry');
+
+render(<Component userId={element.getAttribute('data-user-id')} />, element)
