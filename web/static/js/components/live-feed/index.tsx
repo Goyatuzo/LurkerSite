@@ -1,6 +1,7 @@
 import 'es6-promise';
 
 import * as React from 'react';
+import LiveFeedItem from './item';
 import { IGameFeedItem } from '../../models/feed';
 
 interface Props {
@@ -39,7 +40,7 @@ export class LiveFeedComponent extends React.Component<Props, State> {
         return (
             <div>
                 {
-                    this.state.feedItems.map(item => <div key={item._id}>{item.gameName}</div>)
+                    this.state.feedItems.map(item => <LiveFeedItem key={item._id} feedEntry={item} />)
                 }
             </div>
         )
