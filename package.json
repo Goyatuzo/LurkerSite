@@ -20,6 +20,8 @@
   "homepage": "https://github.com/Goyatuzo/LurkerSite#readme",
   "devDependencies": {
     "@types/chart.js": "2.7.56",
+    "@types/react": "16.9.2",
+    "@types/react-dom": "16.9.0",
     "@types/semantic-ui": "2.2.7",
     "css-loader": "3.2.0",
     "mini-css-extract-plugin": "0.8.0",
@@ -29,5 +31,9 @@
     "typescript": "3.5.3",
     "webpack": "4.39.1",
     "webpack-cli": "3.3.6"
+  },
+  "dependencies": {
+    "react": "16.9.0",
+    "react-dom": "16.9.0"
   }
 }
