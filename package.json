@@ -21,11 +21,13 @@
   "homepage": "https://github.com/Goyatuzo/LurkerSite#readme",
   "devDependencies": {
     "@types/chart.js": "2.7.56",
+    "@types/enzyme": "3.10.3",
     "@types/jest": "24.0.18",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
     "@types/semantic-ui": "2.2.7",
     "css-loader": "3.2.0",
+    "enzyme": "3.10.0",
     "jest": "24.9.0",
     "mini-css-extract-plugin": "0.8.0",
     "node-sass": "4.12.0",
