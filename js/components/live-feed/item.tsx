@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IGameFeedItem } from '../../models/feed';
 import parseISO from 'date-fns/parseISO'
-import subMilliseconds from 'date-fns/subMilliseconds';
 
 interface Props {
     feedEntry: IGameFeedItem;
