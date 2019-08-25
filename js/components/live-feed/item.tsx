@@ -13,12 +13,26 @@ export const LiveFeedItem: React.StatelessComponent<Props> = props => {
 
     let playedAgoString = '';
 
-    if (diff > 86400000) {
-        playedAgoString = `${(diff / 86400000).toFixed(0)} days ago`;
-    } else if (diff > 3600000) {
-        playedAgoString = `${(diff / 3600000).toFixed(0)} hours ago`;
-    } else if (diff > 60000) {
-        playedAgoString = `${(diff / 60000).toFixed(0)} minutes ago`;
+    if (diff >= 86400000) {
+        if (diff < 172800000) {
+            playedAgoString = `1 day ago`;
+        } else {
+            playedAgoString = `${(diff / 86400000).toFixed(0)} days ago`;
+        }
+    } else if (diff >= 3600000) {
+        if (diff < 7200000) {
+            playedAgoString = `1 hour ago`;
+        } else {
+            playedAgoString = `${(diff / 3600000).toFixed(0)} hours ago`;
+        }
+    } else if (diff >= 60000) {
+        if (diff < 120000) {
+            playedAgoString = `1 minute ago`;
+        } else {
+            playedAgoString = `${(diff / 60000).toFixed(0)} minutes ago`;
+        }
+    } else if (diff >= 1000 && diff < 2000) {
+        playedAgoString = `1 second ago`;
     } else {
         playedAgoString = `${(diff / 1000).toFixed(0)} seconds ago`;
     }
