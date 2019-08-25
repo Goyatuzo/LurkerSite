@@ -6,5 +6,5 @@ export const gameFeedOne: IGameFeedItem = {
     gameName: 'League of Legends',
     gameState: '',
     sessionEnd: (new Date(2010, 10, 10)).toISOString(),
-    time: 600
+    time: 6.1234567890
 };

@@ -10,7 +10,7 @@ import { gameFeedOne } from '../data/game-feed';
 import LiveFeedItem from '../../live-feed/item';
 
 configure({ adapter: new Adapter() });
-describe(`Live Feed Item test`, () => {
+describe(`Live Feed Item`, () => {
     let comp: ShallowWrapper;
     const now = new Date(gameFeedOne.sessionEnd);
 
@@ -22,7 +22,7 @@ describe(`Live Feed Item test`, () => {
         expect(comp.contains("League of Legends")).toBeTruthy();
     });
 
-    describe("Played string test", () => {
+    describe("Last Played", () => {
         it('0 seconds ago', () => {
             const currentTime = gameFeedOne.sessionEnd;
 
@@ -100,5 +100,11 @@ describe(`Live Feed Item test`, () => {
 
             expect(comp.contains("2 days ago")).toBeTruthy()
         });
+    });
+
+    it('Time Played', () => {
+        expect(comp.find(".time-played")).toHaveLength(1);
+
+        expect(comp.contains('6.12')).toBeTruthy();
     });
 });
