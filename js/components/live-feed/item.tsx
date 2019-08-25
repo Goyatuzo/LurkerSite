@@ -4,12 +4,12 @@ import parseISO from 'date-fns/parseISO'
 
 interface Props {
     feedEntry: IGameFeedItem;
+    currentTime: Date;
 }
 
 export const LiveFeedItem: React.StatelessComponent<Props> = props => {
     const endDate = parseISO(props.feedEntry.sessionEnd);
-    const now = new Date();
-    const diff = now.getTime() - endDate.getTime();
+    const diff = props.currentTime.getTime() - endDate.getTime();
 
     let playedAgoString = '';
 

@@ -45,6 +45,8 @@ export class LiveFeedComponent extends React.Component<Props, State> {
     }
 
     render() {
+        const now = new Date();
+
         return (
             <div>
                 <h2>Recent activity</h2>
@@ -61,7 +63,7 @@ export class LiveFeedComponent extends React.Component<Props, State> {
 
                     <tbody>
                         {
-                            this.state.feedItems.map(item => <LiveFeedItem key={item._id} feedEntry={item} />)
+                            this.state.feedItems.map(item => <LiveFeedItem key={item._id} feedEntry={item} currentTime={now} />)
                         }
                     </tbody>
                 </table>
