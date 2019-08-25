@@ -10,9 +10,9 @@ module.exports = [
     {
         mode: "development",
         entry: {
-            "home": './web/static/js/home/index.ts',
-            "user-time": './web/static/js/user/user-time.ts',
-            "live-feed": './web/static/js/user/live-feed.tsx'
+            "home": './js/home/index.ts',
+            "user-time": './js/user/user-time.ts',
+            "live-feed": './js/user/live-feed.tsx'
         },
         output: {
             filename: '[name]-bundle.js',
@@ -38,7 +38,7 @@ module.exports = [
     },
     {
         entry: {
-            main: './web/static/css/main.scss'
+            main: './css/main.scss'
         },
         mode: "development",
         output: {
