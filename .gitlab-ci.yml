@@ -1,6 +1,33 @@
+image: node:10
+
 stages:
-  # - test
+  - install
+  - test
+  - build
   - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+install_npm:
+  stage: install
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+
+test_static:
+  stage: test
+  script:
+    - npm test
+
+build_static:
+  stage: build
+  image: node:10
+  script:
+    - npm run build-prod
 
 # test:
 #   stage: test
