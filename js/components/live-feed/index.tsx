@@ -4,17 +4,17 @@ import * as React from 'react';
 import LiveFeedItem from './item';
 import { IGameFeedItem } from '../../models/feed';
 
-interface Props {
+export interface LiveFeedProps {
     userId: string;
 }
 
-interface State {
+export interface LiveFeedState {
     feedItems: IGameFeedItem[];
     error: any;
 }
 
-export class LiveFeedComponent extends React.Component<Props, State> {
-    constructor(props: Props) {
+export class LiveFeedComponent extends React.Component<LiveFeedProps, LiveFeedState> {
+    constructor(props: LiveFeedProps) {
         super(props);
 
         this.state = {
