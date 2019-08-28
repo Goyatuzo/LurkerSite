@@ -10,6 +10,11 @@ home_bp = Blueprint(
 
 @home_bp.route('/')
 def home():
+    return render_template('home.html')
+
+
+@home_bp.route('/stats')
+def stats():
     game_times = get_game_times()
 
     game_times = game_times.aggregate([
@@ -45,4 +50,4 @@ def home():
     listify = list(game_times)
     names = [time['_id']['gameName'] for time in listify]
 
-    return render_template('home.html', games=names, times=listify)
+    return render_template('stats.html', games=names, times=listify)
