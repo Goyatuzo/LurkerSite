@@ -51,3 +51,7 @@
 <p>Only the bot is tracking items, and the code is readily available <a href="https://github.com/Goyatuzo/LurkerBot">on
         Github</a></p>
 {% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='dist/home-bundle.js') }}"></script>
+{% endblock %}
