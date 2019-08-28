@@ -33,10 +33,17 @@ def get_stats_bar_graph():
         },
         {
             '$limit': 10
+        },
+        {
+            '$project': {
+                '_id': 0,
+                'gameName': '$_id.gameName',
+                'time': '$time'
+            }
         }
     ])
 
     bar_graph = list(time_query)
-    names = [time['_id']['gameName'] for time in bar_graph]
+    names = [time['gameName'] for time in bar_graph]
 
     return bar_graph, names
