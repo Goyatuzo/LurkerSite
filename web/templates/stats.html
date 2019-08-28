@@ -4,16 +4,12 @@
 <h1>Stats</h1>
 
 <h2>Past 2 weeks top 10 most played games</h2>
-<canvas id="time-chart"></canvas>
+
+<div id="stats-entry"></div>
 {% endblock %}
 
 
 {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
-<script>
-    var gameNames = {{ games| safe }};
-    var gameTimes = {{ times| safe }};
-</script>
-
-<script src="{{ url_for('static', filename='dist/home-bundle.js') }}"></script>
+<script src="{{ url_for('static', filename='dist/stats-bundle.js') }}"></script>
 {% endblock %}
