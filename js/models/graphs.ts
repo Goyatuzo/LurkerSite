@@ -1,4 +1,4 @@
-export interface IMostFrequentlyPlayedItem {
+export interface IMostPlayedItem {
     /**
      * The name of the game.
      */

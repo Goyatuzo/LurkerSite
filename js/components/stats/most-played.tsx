@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { IMostFrequentlyPlayedItem } from '../../models/graphs';
+import { IMostPlayedItem } from '../../models/graphs';
 import Chart from 'chart.js';
 
 export interface MFPCProps {
     chartId: string;
-    entries: IMostFrequentlyPlayedItem[];
+    entries: IMostPlayedItem[];
 }
 
 export interface MFPCState {
 
 }
 
-export class MostFrequentlyPlayedComponent extends React.Component<MFPCProps, MFPCState> {
+export class MostPlayedComponent extends React.Component<MFPCProps, MFPCState> {
     private chart: Chart;
 
     componentDidMount() {
@@ -46,4 +46,4 @@ export class MostFrequentlyPlayedComponent extends React.Component<MFPCProps, MF
     }
 }
 
-export default MostFrequentlyPlayedComponent;
+export default MostPlayedComponent;
