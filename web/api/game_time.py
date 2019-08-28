@@ -3,6 +3,8 @@ from flask import Blueprint, jsonify, request, Response
 from bson.json_util import dumps
 
 from ..db import get_game_times
+from .stats.bar_graph import get_stats_bar_graph
+from .stats.line_graph import get_stats_line_graph
 
 api_game_time_bp = Blueprint(
     'api-game-time', __name__, url_prefix='/api/time')
@@ -53,3 +55,12 @@ def get_feed(user_id: str):
             '+00:00'
 
     return jsonify(stored)
+
+
+@api_game_time_bp.route('/stats', methods=['GET'])
+def get_stats():
+    """Get a feed of the past 5 games played."""
+    bar_graph, names = get_stats_bar_graph()
+    line_graph = get_stats_line_graph()
+
+    return jsonify(most_played=bar_graph, game_names=names, played_hours=line_graph)
