@@ -45,7 +45,7 @@ export class NumberOfPlayersComponent extends React.Component<NOPProps, NOPState
                             xAxes: [{
                                 type: 'time',
                                 time: {
-                                    unit: 'month'
+                                    unit: 'hour'
                                 }
                             }]
                         }
@@ -74,7 +74,7 @@ export class NumberOfPlayersComponent extends React.Component<NOPProps, NOPState
 
         for (let i = 0; i < keys.length; ++i) {
             const key = keys[i];
-            
+
             timePoints.push({
                 t: parseISO(key),
                 y: props.entries[key].y
