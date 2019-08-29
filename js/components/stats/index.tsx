@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { IStatsReponse } from '../../models/graphs';
 import MostPlayed from './most-played';
+import NumberOfPlayers from './number-of-players';
 
 export interface StatsProps {
 
@@ -19,11 +20,11 @@ export class StatsComponent extends React.Component<StatsProps, StatsState> {
             response: {
                 game_names: [],
                 most_played: [],
-                played_hours: []
+                played_hours: {}
             }
         }
     }
-    
+
     componentDidMount() {
         fetch(`/api/time/stats`).then(response => response.json())
             .then((data: IStatsReponse) => {
@@ -35,7 +36,10 @@ export class StatsComponent extends React.Component<StatsProps, StatsState> {
 
     render() {
         return (
-            <MostPlayed chartId="two-weeks" names={this.state.response.game_names} entries={this.state.response.most_played} />
+            <div>
+                <MostPlayed chartId="two-weeks" names={this.state.response.game_names} entries={this.state.response.most_played} />
+                <NumberOfPlayers chartId="players" entries={this.state.response.played_hours} />
+            </div>
         )
     }
 }

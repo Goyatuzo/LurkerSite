@@ -41,14 +41,17 @@ def get_stats_line_graph():
             },
             {
                 '$project': {
-                    '_id': 0
+                    '_id': 0,
+                    'y': '$count'
                 }
             }
         ])
 
         line_graph = list(time_query)
 
-        time_count[curr.isoformat()] = line_graph
+        if len(line_graph) > 0:
+            time_count[curr.isoformat()] = line_graph[0]
+
         curr = curr - timedelta(hours=1)
 
     return time_count
