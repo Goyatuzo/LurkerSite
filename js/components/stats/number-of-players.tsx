@@ -33,7 +33,7 @@ export class NumberOfPlayersComponent extends React.Component<NOPProps, NOPState
                     type: 'line',
                     data: {
                         datasets: [{
-                            label: 'Hours Played',
+                            label: 'Number of Players',
                             data: this.state.timePoints,
                             backgroundColor: 'rgba(255, 99, 132, 0.2)',
                             borderColor: 'rgba(255, 99, 132, 1)',
