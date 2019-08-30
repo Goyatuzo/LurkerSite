@@ -32,8 +32,6 @@ def get_user_graph(user_id):
 
         user = coll.discord_db_user.find_one({'userId': user_id})
         times = game_collection.find({'userId': user_id})
-        games = times.distinct('gameName')
-        games.sort()
 
         times = game_collection.aggregate([
             {
@@ -59,7 +57,11 @@ def get_user_graph(user_id):
                 }
             }])
 
-        return render_template('user-time.html', user_info=user, games=games, times=dumps(times), user_id=user_id, drill_deeper='true')
+        saved = list(times)
+
+        games = sorted(set([i['_id'] for i in saved]))
+
+        return render_template('user-time.html', user_info=user, games=games, times=dumps(saved), user_id=user_id, drill_deeper='true')
     except Exception as e:
         print(e)
         return render_template('user-time-error.html'), 500
