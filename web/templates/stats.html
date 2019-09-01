@@ -1,0 +1,11 @@
+{%extends "root.html" %}
+
+{% block content %}
+<h1>Stats</h1>
+<div id="stats-entry"></div>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='dist/stats-bundle.js') }}"></script>
+{% endblock %}

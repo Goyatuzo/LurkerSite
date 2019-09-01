@@ -50,19 +50,8 @@
     game you are playing as well as the game state and information available to me via presence.</p>
 <p>Only the bot is tracking items, and the code is readily available <a href="https://github.com/Goyatuzo/LurkerBot">on
         Github</a></p>
-
-
-<h2>Past 2 weeks top 10 most played games</h2>
-<canvas id="time-chart"></canvas>
 {% endblock %}
 
-
 {% block scripts %}
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
-<script>
-    var gameNames = {{ games|safe }};
-    var gameTimes = {{ times|safe }};
-</script>
-
 <script src="{{ url_for('static', filename='dist/home-bundle.js') }}"></script>
 {% endblock %}

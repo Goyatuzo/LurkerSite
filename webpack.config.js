@@ -11,6 +11,7 @@ module.exports = [
         mode: "development",
         entry: {
             "home": './js/home/index.ts',
+            "stats": './js/stats/index.tsx',
             "user-time": './js/user/user-time.ts',
             "live-feed": './js/user/live-feed.tsx'
         },
