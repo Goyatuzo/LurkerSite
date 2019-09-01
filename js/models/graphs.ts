@@ -1,7 +1,7 @@
 export interface IStatsReponse {
     game_names: string[];
     most_played: IMostPlayedItem[];
-    played_hours: IPlayedSpanItem;
+    played_hours: IPlayedSpan;
 }
 
 export interface IMostPlayedItem {
@@ -12,4 +12,4 @@ export interface IMostPlayedItem {
     time: number;
 }
 
-export type IPlayedSpanItem = { [isoDate: string]: { y: number } };
+export type IPlayedSpan = { [isoDate: string]: { y: number } };

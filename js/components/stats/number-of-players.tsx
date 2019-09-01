@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Chart } from 'chart.js';
-import { IPlayedSpanItem } from '../../models/graphs';
+import { IPlayedSpan } from '../../models/graphs';
 
 import parseISO from 'date-fns/parseISO';
 
 export interface NOPProps {
     chartId: string;
-    entries: IPlayedSpanItem;
+    entries: IPlayedSpan;
 }
 
 export interface NOPState {
