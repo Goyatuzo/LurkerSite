@@ -12,13 +12,13 @@ def get_stats_line_graph():
     curr = datetime.now().astimezone(pytz.utc).replace(
         minute=0, second=0, microsecond=0)
 
-    time_count = {}
+    time_count = []
 
     while curr > limit:
         time_query = game_times.aggregate([
             {
                 '$match': {
-                    'sessionEnd': {'$gte': datetime.now() - timedelta(days=2)}
+                    'sessionEnd': {'$gte': curr, '$lt': curr + timedelta(hours=1)}
                 }
             },
             {
@@ -50,7 +50,9 @@ def get_stats_line_graph():
         line_graph = list(time_query)
 
         if len(line_graph) > 0:
-            time_count[curr.isoformat()] = line_graph[0]
+            time_count.append({ 'y': line_graph[0]['y'], 't': curr.isoformat() })
+        else:
+            time_count.append({ 'y': 0, 't': curr.isoformat() })
 
         curr = curr - timedelta(hours=1)
 
