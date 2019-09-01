@@ -3,10 +3,12 @@ import { Chart } from 'chart.js';
 import { IPlayedSpan } from '../../models/graphs';
 
 import parseISO from 'date-fns/parseISO';
+import isAfter from 'date-fns/isAfter';
 
 export interface NOPProps {
     chartId: string;
     entries: IPlayedSpan;
+    firstHour: Date;
 }
 
 export interface NOPState {
@@ -68,14 +70,19 @@ export class NumberOfPlayersComponent extends React.Component<NOPProps, NOPState
         if (state.dataLoaded || Object.keys(props.entries).length === 0) {
             return null;
         }
-        
+
         let timePoints: { t: Date, y: number }[] = [];
 
-        for (let i = 0; i < props.entries.length; ++i) {
+        for (let i = props.entries.length - 1; i >= 0; --i) {
             const curr = props.entries[i];
 
+            const time = parseISO(curr.t);
+
+            if (isAfter(time, props.firstHour))
+                break;
+
             timePoints.push({
-                t: parseISO(curr.t),
+                t: time,
                 y: curr.y
             })
         }

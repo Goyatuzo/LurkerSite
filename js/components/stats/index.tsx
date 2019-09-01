@@ -41,7 +41,7 @@ export class StatsComponent extends React.Component<StatsProps, StatsState> {
                 <MostPlayed chartId="two-weeks" names={this.state.response.game_names} entries={this.state.response.most_played} />
 
                 <h2>48 hours number of players</h2>
-                <NumberOfPlayers chartId="players" entries={this.state.response.played_hours} />
+                <NumberOfPlayers chartId="players" entries={this.state.response.played_hours} firstHour={new Date()} />
             </div>
         )
     }
