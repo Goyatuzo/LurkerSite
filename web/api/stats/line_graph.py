@@ -22,11 +22,6 @@ def get_stats_line_graph():
                 }
             },
             {
-                '$sort': {
-                    'sessionEnd': -1
-                }
-            },
-            {
                 '$group': {
                     '_id': '$userId',
                 }
