@@ -68,16 +68,15 @@ export class NumberOfPlayersComponent extends React.Component<NOPProps, NOPState
         if (state.dataLoaded || Object.keys(props.entries).length === 0) {
             return null;
         }
-
-        const keys = Object.keys(props.entries);
+        
         let timePoints: { t: Date, y: number }[] = [];
 
-        for (let i = 0; i < keys.length; ++i) {
-            const key = keys[i];
+        for (let i = 0; i < props.entries.length; ++i) {
+            const curr = props.entries[i];
 
             timePoints.push({
-                t: parseISO(key),
-                y: props.entries[key].y
+                t: parseISO(curr.t),
+                y: curr.y
             })
         }
 

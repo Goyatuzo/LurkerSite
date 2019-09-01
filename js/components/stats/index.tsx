@@ -20,7 +20,7 @@ export class StatsComponent extends React.Component<StatsProps, StatsState> {
             response: {
                 game_names: [],
                 most_played: [],
-                played_hours: {}
+                played_hours: []
             }
         }
     }

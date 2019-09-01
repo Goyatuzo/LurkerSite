@@ -12,4 +12,4 @@ export interface IMostPlayedItem {
     time: number;
 }
 
-export type IPlayedSpan = { [isoDate: string]: { y: number } };
+export type IPlayedSpan = { t: string, y: number }[];
