@@ -18,6 +18,7 @@ export interface NOPState {
 
 export class NumberOfPlayersComponent extends React.Component<NOPProps, NOPState> {
     private chart: Chart;
+    private canvasRef: React.RefObject<HTMLCanvasElement>;
 
     constructor(props: NOPProps) {
         super(props);
@@ -26,12 +27,14 @@ export class NumberOfPlayersComponent extends React.Component<NOPProps, NOPState
             timePoints: [],
             dataLoaded: false
         };
+
+        this.canvasRef = React.createRef<HTMLCanvasElement>();
     }
 
     private updateChart(): void {
         if (this.state.timePoints && this.state.timePoints.length > 0) {
-            if (!this.chart) {
-                this.chart = new Chart(document.getElementById(this.props.chartId) as HTMLCanvasElement, {
+            if (!this.chart && this.canvasRef.current) {
+                this.chart = new Chart(this.canvasRef.current, {
                     type: 'line',
                     data: {
                         datasets: [{
@@ -99,7 +102,7 @@ export class NumberOfPlayersComponent extends React.Component<NOPProps, NOPState
 
     render() {
         return (
-            <canvas id={this.props.chartId}></canvas>
+            <canvas ref={this.canvasRef}></canvas>
         )
     }
 }
