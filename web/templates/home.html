@@ -1,76 +1,70 @@
 {%extends "root.html" %}
 
 {% block content %}
-<h1>Lurker Bot</h1>
 
-<div class="ui fluid search">
-    <div class="ui fluid icon input">
-        <input class="prompt" type="text" placeholder="Search by Username#Discrminator">
-        <i class="arrow right icon"></i>
+<div class="ui vertical masthead center aligned segment">
+    <div class="ui text container">
+        <h1 class="ui header" style="font-size: 4em;">Plyd</h1>
+        <h2>Track time played in a game and see stats.</h2>
     </div>
-    <div class="results"></div>
-</div>
 
-<h2>What is this?</h2>
-<p>Raptr and Xfire went out, so this bot fills the void. It looks at your status in Discord and keeps track of how long you play games!</p>
-
-<h2>How to start tracking</h2>
-
-<div class="ui list">
-    <div class="item">
-        <i class="icon">1</i>
-        <div class="content">
-            <div class="header">Have access to the bot</div>
-            <div class="description">Only one of the following 2 options must be true</div>
-            <div class="list">
-                <div class="item">
-                    <i class="icon">a</i>
-                    <div class="content">
-                        <div class="header"><a href="https://discord.gg/qJEHRHH">Join the Lurker Server</a></div>
+    <div class="ui placeholder segment">
+        <div class="ui two column stackable center aligned grid">
+            <div class="ui vertical divider">Or</div>
+            <div class="middle aligned row">
+                <div class="column">
+                    <div class="ui icon header">
+                        <i class="search icon"></i>
+                        Find User
+                    </div>
+                    <div class="field">
+                        <div class="ui search">
+                            <div class="ui icon input">
+                                <input class="prompt" type="text" placeholder="Search by Username...">
+                                <i class="arrow right icon"></i>
+                            </div>
+                            <div class="results"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="item">
-                    <i class="icon">b</i>
-                    <div class="content">
-                        <div class="header"><a
-                                href="https://discordapp.com/oauth2/authorize?client_id=193907867483504642&scope=bot&permissions=0">Invite
-                                Lurker to your Server</a></div>
+                <div class="column">
+                    <div class="ui icon header">
+                        <i class="world icon"></i>
+                        Join and Start Tracking
                     </div>
+                    <p>No registeration necessary</p>
+                    <a class="ui primary button" href="/join">
+                        Join
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="item">
-        <i class="icon">2</i>
-        <div class="content">
-            <div class="header">On any server where Lurker Bot is present, message the bot "addme".</div>
-            <div class="description">To stop tracking, message the bot "removeme".</div>
-        </div>
-    </div>
+</div>
 
-    <div class="item">
-        <i class="icon">3</i>
-        <div class="content">
-            <div class="header">The bot will respond to your message no matter what. Verify you receive a message.</div>
-        </div>
-    </div>
+<div class="ui vertical stripe segment">
+    <div class="ui middle aligned stackable grid container">
+        <div class="row">
+            <div class="wide column">
+                <h3 class="ui header">What is this?</h3>
+                <p style="font-size:1.33em">Remember Xfire or Raptr? This uses Discord to keep track of gametime for
+                    Steam, UPlay, Epic Games, Origin, and more.</p>
 
-    <div class="item">
-        <i class="icon">4</i>
-        <div class="content">
-            <div class="header">You're done!</div>
+                <h3 class="ui header">What am I tracking?</h3>
+                <p style="font-size:1.33em">Your status / Presence on Discord. If it changes and you're being tracked, I
+                    parse that information to
+                    determine what game you are playing as well as the game state and information available to me via
+                    presence. 
+                </p>
+                <p style="font-size:1.33em">Only the bot is tracking items, and the code is readily available <a
+                        href="https://github.com/Goyatuzo/LurkerBot">on
+                        Github</a></p>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="description">NOTE: Be sure to toggle "Display currently running game as a status message" on.</div>
 
-
-<h2>What am I tracking?</h2>
-<p>Your status / Presence on Discord. If it changes and you're being tracked, I parse that information to determine what
-    game you are playing as well as the game state and information available to me via presence.</p>
-<p>Only the bot is tracking items, and the code is readily available <a href="https://github.com/Goyatuzo/LurkerBot">on
-        Github</a></p>
 {% endblock %}
 
 {% block scripts %}
