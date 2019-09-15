@@ -14,11 +14,17 @@
 
 <body>
     <div class="ui menu">
-        <a class="item" href="/">Home</a>
-        <a class="item" href="/stats">Stats</a>
+        <div class="ui container">
+            <a class="item" href="/">Home</a>
+            <a class="item" href="/stats">Stats</a>
+
+            <div class="right menu">
+                <a class="ui item" href="/join">Join</a>
+            </div>
+        </div>
     </div>
 
-    <div class="ui container">{% block content %}{% endblock %}</div>
+    {% block content %}{% endblock %}
 
     <footer>
         {% block footer %}
