@@ -1,26 +1,29 @@
 {%extends "root.html" %}
 
 {% block content %}
-{{ super() }}
-<h1>{{ user_info.username + '#' + user_info.discriminator }}</h1>
 
-{% if drill_deeper == 'true' %}
-<p>Click on one of the bars to get the breakdown of each game's time played.</p>
-{% endif %}
+<div class="ui container">
+    {{ super() }}
+    <h1>{{ user_info.username + '#' + user_info.discriminator }}</h1>
 
-<div id="live-feed-entry" data-user-id='{{ user_id }}'></div>
+    {% if drill_deeper == 'true' %}
+    <p>Click on one of the bars to get the breakdown of each game's time played.</p>
+    {% endif %}
 
-<h2>Gameplay Graphs</h2>
-<button class="ui button"><a href="?from=2weeks">2 Weeks</a></button>
-<button class="ui button"><a href="?from=all">All Times</a></button>
-<canvas id="time-chart"></canvas>
+    <div id="live-feed-entry" data-user-id='{{ user_id }}'></div>
+
+    <h2>Gameplay Graphs</h2>
+    <button class="ui button"><a href="?from=2weeks">2 Weeks</a></button>
+    <button class="ui button"><a href="?from=all">All Times</a></button>
+    <canvas id="time-chart"></canvas>
+</div>
 {% endblock %}
 
 {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 <script>
-    var gameNames = {{ games|safe }};
-    var gameTimes = {{ times|safe }};
+    var gameNames = {{ games| safe }};
+    var gameTimes = {{ times| safe }};
     var canDrillDeeper = {{ drill_deeper }}
 </script>
 <script src="{{ url_for('static', filename='dist/user-time-bundle.js') }}"></script>
