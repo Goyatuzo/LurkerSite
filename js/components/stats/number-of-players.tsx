@@ -34,6 +34,8 @@ export class NumberOfPlayersComponent extends React.Component<NOPProps, NOPState
     private updateChart(): void {
         if (this.state.timePoints && this.state.timePoints.length > 0) {
             if (!this.chart && this.canvasRef.current) {
+                const maxY = Math.max(...this.state.timePoints.map(point => point.y));
+
                 this.chart = new Chart(this.canvasRef.current, {
                     type: 'line',
                     data: {
@@ -51,6 +53,13 @@ export class NumberOfPlayersComponent extends React.Component<NOPProps, NOPState
                                 type: 'time',
                                 time: {
                                     unit: 'hour'
+                                }
+                            }],
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    stepSize: maxY / 10 < 1 ? 1 : maxY / 10,
+                                    max: maxY
                                 }
                             }]
                         }
