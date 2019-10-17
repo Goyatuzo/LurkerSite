@@ -4,6 +4,15 @@ export interface IStatsReponse {
     played_hours: IPlayedSpan;
 }
 
+export interface IGameStatsResponse {
+    past_year: IPastGameHeatmapEntry[];
+}
+
+export interface IPastGameHeatmapEntry {
+    date: string;
+    time: number;
+}
+
 export interface IMostPlayedItem {
     /**
      * The name of the game.
