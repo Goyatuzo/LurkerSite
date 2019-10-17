@@ -5,6 +5,7 @@ from bson.json_util import dumps
 from ..db import get_game_times
 from .stats.bar_graph import get_stats_bar_graph
 from .stats.line_graph import get_stats_line_graph
+from .stats.game_name import hours_sum_past_year
 
 api_game_time_bp = Blueprint(
     'api-game-time', __name__, url_prefix='/api/time')
@@ -64,3 +65,11 @@ def get_stats():
     line_graph = get_stats_line_graph()
 
     return jsonify(most_played=bar_graph, game_names=names, played_hours=line_graph)
+
+@api_game_time_bp.route('/game/all-stats/<game_name>', methods=['GET'])
+def get_all_game_data(game_name: str):
+    return jsonify(past_year=hours_sum_past_year(game_name))
+
+@api_game_time_bp.route('/game/<game_name>', methods=['GET'])
+def get_past_year_by_game_name(game_name: str):
+    return jsonify(hours_sum_past_year(game_name))

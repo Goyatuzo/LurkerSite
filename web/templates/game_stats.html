@@ -1,0 +1,13 @@
+{%extends "root.html" %}
+
+{% block content %}
+<div class="ui container">
+    <h1>{{ game_name }}</h1>
+    <div id="stats-entry" data-game-name="{{ game_name }}"></div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{{ static_url_for('dist/game-graphs-bundle.js') }}"></script>
+{% endblock %}

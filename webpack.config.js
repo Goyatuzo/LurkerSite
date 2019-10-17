@@ -13,7 +13,8 @@ module.exports = [
             "home": './js/home/index.ts',
             "stats": './js/stats/index.tsx',
             "user-time": './js/user/user-time.ts',
-            "live-feed": './js/user/live-feed.tsx'
+            "live-feed": './js/user/live-feed.tsx',
+            "game-graphs": './js/game/graphs.tsx'
         },
         output: {
             filename: '[name]-bundle.js',

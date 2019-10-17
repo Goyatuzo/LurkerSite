@@ -8,13 +8,6 @@
         <div class="item">
             <i class="icon">1</i>
             <div class="content">
-                <div class="header"><a href="/terms">Terms</a> and <a href="/privacy">Privacy</a></div>
-                <div class="description">By DM'ing the bot "addme", you are acknolwedging and accepting both the terms, and the privacy policy.</div>
-            </div>
-        </div>
-        <div class="item">
-            <i class="icon">2</i>
-            <div class="content">
                 <div class="description">
                     <a class="ui left attached button" href="https://discord.gg/qJEHRHH">Join the Lurker Server</a>
                     <a class="ui right attached button"
@@ -24,7 +17,7 @@
             </div>
         </div>
         <div class="item">
-            <i class="icon">3</i>
+            <i class="icon">2</i>
             <div class="content">
                 <div class="header">DM the bot "addme".</div>
                 <div class="description">The bot will always respond to your message.</div>
@@ -39,5 +32,5 @@
 
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='dist/stats-bundle.js') }}"></script>
+<script src="{{ static_url_for('dist/stats-bundle.js') }}"></script>
 {% endblock %}

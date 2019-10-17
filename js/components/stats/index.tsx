@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { IStatsReponse } from '../../models/graphs';
 import MostPlayed from './most-played';
-import NumberOfPlayers from './number-of-players';
+import TimeLineGraph from '../graphs/time-line';
 
 export interface StatsProps {
 
@@ -41,7 +41,7 @@ export class StatsComponent extends React.Component<StatsProps, StatsState> {
                 <MostPlayed chartId="two-weeks" names={this.state.response.game_names} entries={this.state.response.most_played} />
 
                 <h2>48 hours number of players</h2>
-                <NumberOfPlayers chartId="players" entries={this.state.response.played_hours} firstHour={new Date()} />
+                <TimeLineGraph yAxisLabel="Numbers of Players" entries={this.state.response.played_hours} firstHour={new Date()} unit="hour" />
             </div>
         )
     }

@@ -26,6 +26,6 @@
     var gameTimes = {{ times| safe }};
     var canDrillDeeper = {{ drill_deeper }}
 </script>
-<script src="{{ url_for('static', filename='dist/user-time-bundle.js') }}"></script>
-<script src="{{ url_for('static', filename='dist/live-feed-bundle.js') }}"></script>
+<script src="{{ static_url_for('dist/user-time-bundle.js') }}"></script>
+<script src="{{ static_url_for('dist/live-feed-bundle.js') }}"></script>
 {% endblock %}
