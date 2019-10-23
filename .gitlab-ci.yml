@@ -44,6 +44,6 @@ production:
   - apt-get update -qy
   - apt-get install -y ruby-dev
   - gem install dpl
-  - dpl --provider=heroku --app=lurker --api-key=$HEROKU_PRODUCTION_API_KEY
+  - dpl --provider=heroku --app=plyd --api-key=$HEROKU_PRODUCTION_API_KEY
   only:
   - tags
