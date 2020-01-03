@@ -11,6 +11,7 @@ export interface LiveFeedProps {
 export interface LiveFeedState {
     feedItems: IGameFeedItem[];
     error: any;
+    fetchCount: number;
 }
 
 export class LiveFeedComponent extends React.Component<LiveFeedProps, LiveFeedState> {
@@ -19,21 +20,28 @@ export class LiveFeedComponent extends React.Component<LiveFeedProps, LiveFeedSt
 
         this.state = {
             feedItems: [],
-            error: undefined
+            error: undefined,
+            fetchCount: 0
         }
     }
 
     fetchData(): void {
-        fetch(`/api/time/feed/${this.props.userId}`)
-            .then(response => response.json()).then((data: IGameFeedItem[]) => {
-                this.setState({
-                    feedItems: data
+        if (this.state.fetchCount < 10) {
+            fetch(`/api/time/feed/${this.props.userId}`)
+                .then(response => response.json()).then((data: IGameFeedItem[]) => {
+                    this.setState({
+                        feedItems: data
+                    });
+                }).catch(err => {
+                    this.setState({
+                        error: err
+                    });
                 });
-            }).catch(err => {
-                this.setState({
-                    error: err
-                });
+
+            this.setState({
+                fetchCount: this.state.fetchCount + 1
             })
+        }
     }
 
     private boundFetchData = this.fetchData.bind(this);
