@@ -53,15 +53,13 @@ def get_user_graph(user_id):
             },
             {
                 '$sort': {
-                    "_id": 1
+                    "time": -1
                 }
             }])
 
         saved = list(times)
 
-        games = sorted(set([i['_id'] for i in saved]))
-
-        return render_template('user-time.html', user_info=user, games=games, times=dumps(saved), user_id=user_id, drill_deeper='true')
+        return render_template('user-time.html', user_info=user, times=saved, user_id=user_id, drill_deeper=True)
     except Exception as e:
         print(e)
         return render_template('user-time-error.html'), 500
@@ -117,13 +115,16 @@ def get_user_game_graph(user_id, game_name):
                         ]}
                     }
                 }
+            },
+            {
+                '$sort': {
+                    'time': -1
+                }
             }])
 
         saved = list(times)
 
-        games = [get_game_label(i) for i in saved]
-
-        return render_template('user-time.html', user_info=user, games=games, times=json.dumps(saved), drill_deeper='false')
+        return render_template('user-time.html', user_info=user, times=saved, drill_deeper=False)
     except Exception as e:
         print(e)
         return render_template('user-time-error.html'), 500
