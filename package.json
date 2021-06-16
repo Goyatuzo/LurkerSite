@@ -6,7 +6,7 @@
   "engines": {
     "npm": "6.x",
     "node": "14.x"
-  }
+  },
   "scripts": {
     "watch": "webpack -w",
     "build-prod": "webpack -p",
