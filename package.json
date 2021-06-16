@@ -6,7 +6,6 @@
   "scripts": {
     "watch": "webpack -w",
     "build-prod": "webpack -p",
-    "postinstall": "npm run build-prod",
     "test": "jest",
     "heroku-prebuild": "npm install",
     "heroku-postbuild": "webpack -p"
