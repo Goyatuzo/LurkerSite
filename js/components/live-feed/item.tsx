@@ -42,6 +42,8 @@ export const LiveFeedItem: React.StatelessComponent<Props> = props => {
             <td>{props.feedEntry.gameName}</td>
             <td>{props.feedEntry.gameDetail}</td>
             <td>{props.feedEntry.gameState}</td>
+            <td>{props.feedEntry.largeAssetText}</td>
+            <td>{props.feedEntry.smallAssetText}</td>
             <td className="time-played">{props.feedEntry.time.toFixed(2)} hours</td>
             <td className="last-played">{playedAgoString}</td>
         </tr>

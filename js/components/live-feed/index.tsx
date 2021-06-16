@@ -64,6 +64,8 @@ export class LiveFeedComponent extends React.Component<LiveFeedProps, LiveFeedSt
                             <th>Game Name</th>
                             <th>Game State</th>
                             <th>Game Detail</th>
+                            <th>Large Asset</th>
+                            <th>Small Asset</th>
                             <th>Duration</th>
                             <th>Played</th>
                         </tr>

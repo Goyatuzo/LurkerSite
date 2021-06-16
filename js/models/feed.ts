@@ -12,6 +12,8 @@ export interface IGameFeedItem {
      * The state of the game, useful in differentiating various states of the game.
      */
     gameState: string;
+    largeAssetText: string;
+    smallAssetText: string;
     /**
      * The amount of time spent playing in hours.
      */

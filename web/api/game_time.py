@@ -33,9 +33,11 @@ def get_feed(user_id: str):
         {
             '$project': {
                 '_id': {'$toString': '$_id'},
-                'gameName': '$gameName',
-                'gameDetail': '$gameDetail',
-                'gameState': '$gameState',
+                'gameName': 1,
+                'gameDetail': 1,
+                'gameState': 1,
+                'largeAssetText': 1,
+                'smallAssetText': 1,
                 'time': {'$sum': {
                     '$divide': [{
                         '$subtract': [
