@@ -40,21 +40,21 @@
         {% else %}
         <thead>
             <tr>
-                <th>Game</th>
+                <th>Detail</th>
+                <th>State</th>
+                <th>Large Asset</th>
+                <th>Small Asset</th>
                 <th>Hours Played</th>
             </tr>
         </thead>
         <tbody>
             {% for entry in times %}
-            {% set gameDetail = entry['_id']['gameDetail'] or "" %}
-            {% set gameState = entry['_id']['gameState'] or "" %}
-            {% set gameType = entry['_id']['gameType'] or "" %}
-            {% set combined = gameDetail + gameState + gameType %}
-            {% set label = combined if combined != "" else entry['_id']['gameName'] %}
-
             <tr>
-                <td data-label="Game">
-                    {{ label }}</td>
+                <td>{{ entry['_id']['gameDetail'] }}</td>
+                <td>{{ entry['_id']['gameState'] }}</td>
+                <td>{{ entry['_id']['largeAssetText'] }}</td>
+                <td>{{ entry['_id']['smallAssetText'] }}</td>
+
                 <td data-label="Time Played">{{ entry['time'] | round(2) }}</td>
             </tr>
             {% endfor %}

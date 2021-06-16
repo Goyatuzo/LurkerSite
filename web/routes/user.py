@@ -91,7 +91,6 @@ def get_user_game_graph(user_id, game_name):
         from_date = get_from_date(request)
 
         user = coll.discord_db_user.find_one({'userId': user_id})
-        times = game_collection.find({'userId': user_id})
         times = game_collection.aggregate([
             {
                 '$match': {
@@ -102,9 +101,10 @@ def get_user_game_graph(user_id, game_name):
             {
                 '$group': {
                     '_id': {
-                        'gameName': "$gameName",
                         'gameDetail': "$gameDetail",
                         'gameState': "$gameState",
+                        'largeAssetText': "$largeAssetText",
+                        'smallAssetText': "$smallAssetText",
                         'gameType': "$gameType"
                     },
                     'time': {'$sum': {
