@@ -19,7 +19,7 @@ export interface TimeLineState {
 }
 
 export class TimeLineComponent extends React.Component<TimeLineProps, TimeLineState> {
-    private chart: Chart;
+    private chart: Chart<"line", any>;
     private canvasRef: React.RefObject<HTMLCanvasElement>;
 
     constructor(props: TimeLineProps) {
@@ -50,19 +50,19 @@ export class TimeLineComponent extends React.Component<TimeLineProps, TimeLineSt
                 },
                 options: {
                     scales: {
-                        xAxes: [{
+                        xAxis: {
                             type: 'time',
                             time: {
                                 unit: this.props.unit
                             }
-                        }],
-                        yAxes: [{
+                        },
+                        yAxis: {
                             ticks: {
-                                beginAtZero: true,
+                                //beginAtZero: true,
                                 stepSize: maxY / 10 < 1 ? 1 : maxY / 10,
-                                max: maxY
+                                //max: maxY
                             }
-                        }]
+                        }
                     }
                 }
             });

@@ -19,7 +19,7 @@ export class MostPlayedComponent extends React.Component<MFPCProps, MFPCState> {
         if (this.props.entries && this.props.entries.length > 0) {
             if (!this.chart) {
                 this.chart = new Chart(document.getElementById(this.props.chartId) as HTMLCanvasElement, {
-                    type: 'horizontalBar',
+                    type: 'bar',
                     data: {
                         labels: this.props.names,
                         datasets: [{
@@ -29,15 +29,6 @@ export class MostPlayedComponent extends React.Component<MFPCProps, MFPCState> {
                             borderColor: 'rgba(255, 99, 132, 1)',
                             borderWidth: 1
                         }]
-                    },
-                    options: {
-                        scales: {
-                            xAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
-                        }
                     }
                 });
             } else {
