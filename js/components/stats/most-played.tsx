@@ -11,7 +11,6 @@ export interface MFPCProps {
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-
 export const MostPlayedComponent: React.FC<MFPCProps> = props => {
     const chartData = {
         labels: props.names,
@@ -19,7 +18,7 @@ export const MostPlayedComponent: React.FC<MFPCProps> = props => {
             label: 'Hours Played',
             data: props.entries.map(time => Number(time.time.toFixed(3))),
             backgroundColor: props.names.map(gameName => stringToColor(gameName)),
-            borderColor: 'rgba(255, 99, 132, 1)',
+            borderColor: props.names.map(gameName => stringToColor(gameName)),
             borderWidth: 1
         }]
     }
