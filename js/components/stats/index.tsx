@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { IStatsReponse } from '../../models/graphs';
 import {useQuery} from "react-query";
-import {PieWrapper} from "../graphs/pie-wrapper";
+import {HoursPie} from "../graphs/hours-pie";
 
 export interface StatsProps {
 
@@ -19,7 +19,7 @@ export const StatsComponent: React.FC<StatsProps> = _ => {
                 <h2>2 weeks most played games</h2>
                 <div className="ui two column stackable grid">
                     <div className="column">
-                        <PieWrapper names={data.game_names} entries={data.most_played}/>
+                        <HoursPie names={data.game_names} entries={data.most_played}/>
                     </div>
                 </div>
             </div>

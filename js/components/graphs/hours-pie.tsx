@@ -11,7 +11,7 @@ export interface PieWrapperProps {
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const PieWrapper: React.FC<PieWrapperProps> = props => {
+export const HoursPie: React.FC<PieWrapperProps> = props => {
     const chartData = {
         labels: props.names,
         datasets: [{
