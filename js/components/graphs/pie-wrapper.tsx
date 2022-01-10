@@ -4,14 +4,14 @@ import { Pie } from 'react-chartjs-2'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import {stringToColor} from "../../helpers/string-to-color";
 
-export interface MFPCProps {
+export interface PieWrapperProps {
     entries: IMostPlayedItem[];
     names: string[];
 }
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const MostPlayedComponent: React.FC<MFPCProps> = props => {
+export const PieWrapper: React.FC<PieWrapperProps> = props => {
     const chartData = {
         labels: props.names,
         datasets: [{
@@ -25,5 +25,3 @@ export const MostPlayedComponent: React.FC<MFPCProps> = props => {
 
     return <Pie data={chartData} />
 }
-
-export default MostPlayedComponent;
