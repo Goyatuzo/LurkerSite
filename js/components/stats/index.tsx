@@ -38,7 +38,11 @@ export class StatsComponent extends React.Component<StatsProps, StatsState> {
         return (
             <div>
                 <h2>2 weeks most played games</h2>
-                <MostPlayed names={this.state.response.game_names} entries={this.state.response.most_played} />
+                <div className="ui two column stackable grid">
+                    <div className="column">
+                        <MostPlayed names={this.state.response.game_names} entries={this.state.response.most_played} />
+                    </div>
+                </div>
 
                 <h2>48 hours number of players</h2>
                 <TimeLineGraph yAxisLabel="Numbers of Players" entries={this.state.response.played_hours} firstHour={new Date()} unit="hour" />
