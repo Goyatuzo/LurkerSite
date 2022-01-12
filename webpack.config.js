@@ -14,7 +14,8 @@ module.exports = [
             "stats": './js/stats/index.tsx',
             "user-time": './js/user/user-time.ts',
             "live-feed": './js/user/live-feed.tsx',
-            "game-graphs": './js/game/graphs.tsx'
+            "game-graphs": './js/game/graphs.tsx',
+            "user-graphs": "./js/apps/user-game-summary.tsx"
         },
         output: {
             filename: '[name]-bundle.js',
