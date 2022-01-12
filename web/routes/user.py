@@ -1,9 +1,8 @@
-from flask import Blueprint, render_template, request
 from datetime import datetime, timedelta
 
+from flask import Blueprint, render_template, request
+
 from ..db import get_lurker_database, get_game_times
-from bson.json_util import dumps
-import json
 
 user_bp = Blueprint(
     'user', __name__, template_folder='templates', url_prefix='/user')
@@ -124,7 +123,7 @@ def get_user_game_graph(user_id, game_name):
 
         saved = list(times)
 
-        return render_template('user-time.html', user_info=user, times=saved, drill_deeper=False)
+        return render_template('user-time.html', user_info=user, game_name=game_name, times=saved, drill_deeper=False)
     except Exception as e:
         print(e)
         return render_template('user-time-error.html'), 500

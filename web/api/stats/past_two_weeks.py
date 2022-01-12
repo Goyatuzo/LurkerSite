@@ -40,13 +40,13 @@ def get_past_two_weeks(user_id: str, game_name: str, details: str):
         {
             '$project': {
                 '_id': 0,
-                'name': '$_id.detail',
+                'name': { '$ifNull': ["$_id.detail", ""] },
                 'time': '$time'
             }
         }
     ])
 
     bar_graph = list(time_query)
-    names = [time['gameName'] for time in bar_graph]
+    names = [time['name'] for time in bar_graph]
 
     return bar_graph, names

@@ -11,7 +11,7 @@ export interface GameDetailPieProps {
 
 export const GameDetailPie: React.FC<GameDetailPieProps> = props => {
     const { isLoading, data } = useQuery<IGameDetailResponse>(`userGameDetail${props.detail}`, () =>
-        fetch(`/api/time/stats/${props.userId}/${props.gameName}${props.detail}`).then(response => response.json())
+        fetch(`/api/time/stats/${props.userId}/${props.gameName}/${props.detail}`).then(response => response.json())
     )
 
     if (isLoading) {

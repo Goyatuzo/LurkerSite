@@ -67,5 +67,11 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ static_url_for('dist/live-feed-bundle.js') }}"></script>
+    <script type="text/javascript">
+        const userId = "{{ user_info.userId }}";
+        const gameName = "{{ game_name }}";
+    </script>
+
+    <script src="{{ static_url_for('dist/live-feed-bundle.js') }}"></script>
+    <script src="{{ static_url_for('dist/user-graphs-bundle.js') }}"></script>
 {% endblock %}
